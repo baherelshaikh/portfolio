@@ -169,13 +169,12 @@ function App() {
       ]
     },
     {
-      title: 'Software Engineer',
+      title: 'Backend Engineer',
       company: 'Freelance & Contract Work',
       period: '2022 - Present',
       location: 'Egypt',
       achievements: [
-        'Built full-stack applications using modern web technologies and frameworks',
-        'Implemented data analysis solutions to provide business insights',
+        'Built Backend applications using modern web technologies and frameworks',
         'Developed secure applications with focus on cybersecurity principles',
         'Adapted quickly to new technologies and frameworks across multiple projects',
         'Delivered projects using agile methodologies and version control best practices'
