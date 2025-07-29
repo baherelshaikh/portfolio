@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { GraduationProject } from './components/GraduationProject';
+import { ProjectDetailPage } from './components/ProjectDetailPage';
 import { 
   Code, 
   Database, 
@@ -35,6 +37,19 @@ import {
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showProjectDetail, setShowProjectDetail] = useState(false);
+
+  const handleViewDetails = () => {
+    setShowProjectDetail(true);
+    // Scroll to top when showing project details
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleBackToPortfolio = () => {
+    setShowProjectDetail(false);
+    // Scroll to top when returning to portfolio
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const skills = [
     { name: 'Node.js', icon: Server, level: 95 },
@@ -255,6 +270,10 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  if (showProjectDetail) {
+    return <ProjectDetailPage onBack={handleBackToPortfolio} />;
+  }
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -276,20 +295,27 @@ function App() {
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
-              {['About', 'Skills', 'Projects', 'Experience', 'Education', 'Certifications', 'Contact'].map((item) => (
+              {['About', 'Skills', 'Graduation Project', 'Projects', 'Experience', 'Education', 'Certifications', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`text-sm font-medium transition-colors ${
+                  className={`text-sm font-medium transition-colors relative ${
                     activeSection === item.toLowerCase()
                       ? 'text-blue-600'
                       : 'text-slate-600 hover:text-blue-600'
                   }`}
                 >
-                  {item}
+                  {item === 'Graduation Project' ? (
+                    <span className="text-yellow-600 font-semibold">
+                      🎓 {item}
+                    </span>
+                  ) : (
+                    item
+                  )}
                 </button>
               ))}
             </div>
+
 
             {/* Mobile menu button */}
             <button
@@ -489,6 +515,11 @@ I guide students through debugging and system design, applying my expertise in p
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Graduation Projects Section */}
+      <section id="graduation project">
+        <GraduationProject onViewDetails={handleViewDetails} />
       </section>
 
       {/* Projects Section */}
