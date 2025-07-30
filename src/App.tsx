@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { GraduationProject } from './components/GraduationProject';
 import { ProjectDetailPage } from './components/ProjectDetailPage';
+import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 import { 
   Code, 
   Database, 
@@ -38,6 +40,9 @@ function App() {
   const [activeSection, setActiveSection] = useState('hero');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showProjectDetail, setShowProjectDetail] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleViewDetails = () => {
     setShowProjectDetail(true);
@@ -796,7 +801,7 @@ I guide students through debugging and system design, applying my expertise in p
               </div>
             </div>
             
-            <div className="bg-slate-50 rounded-2xl p-8 shadow-sm">
+            {/* <div className="bg-slate-50 rounded-2xl p-8 shadow-sm">
               <h3 className="text-xl font-bold text-slate-800 mb-6">Send a Message</h3>
               <form className="space-y-4">
                 <div>
@@ -830,6 +835,215 @@ I guide students through debugging and system design, applying my expertise in p
                   Send Message
                 </button>
               </form>
+            </div> */}
+            {/* <div className="bg-slate-50 rounded-2xl p-8 shadow-sm">
+              <h3 className="text-xl font-bold text-slate-800 mb-6">Send a Message</h3>
+              <form 
+                className="space-y-4"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setIsAnimating(true);
+                  const subject = `Message from ${(e.currentTarget.elements.namedItem('name') as HTMLInputElement).value}`;
+                  const body = `${(e.currentTarget.elements.namedItem('message') as HTMLTextAreaElement).value}\n\nFrom: ${(e.currentTarget.elements.namedItem('name') as HTMLInputElement).value}\nEmail: ${(e.currentTarget.elements.namedItem('email') as HTMLInputElement).value}`;
+                  window.location.href = `mailto:bahergamalelshaikh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                  setTimeout(() => setIsAnimating(false), 2000);
+                }}
+              >
+                <motion.div
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.1 }}
+                >
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Name</label>
+                  <input
+                    name="name"
+                    type="text"
+                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Your Name"
+                    required
+                  />
+                </motion.div>
+                
+                <motion.div
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                  <input
+                    name="email"
+                    type="email"
+                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="your@email.com"
+                    required
+                  />
+                </motion.div>
+                
+                <motion.div
+                  initial={{ x: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                  <textarea
+                    name="message"
+                    rows={4}
+                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Tell me about your project or opportunity..."
+                    required
+                  />
+                </motion.div>
+                
+                <motion.button
+                  type="submit"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  animate={isAnimating ? {
+                    rotate: [0, 5, -5, 5, -5, 0],
+                    scale: [1, 1.05, 1],
+                    transition: { duration: 0.5 }
+                  } : {}}
+                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  {isAnimating ? 'Opening Email... ✉️' : 'Send Message'}
+                </motion.button>
+              </form>
+            </div> */}
+            <div className="bg-slate-50 rounded-2xl p-8 shadow-sm">
+              <h3 className="text-xl font-bold text-slate-800 mb-6">
+                {isSent ? 'Message Sent!' : 'Send a Message'}
+              </h3>
+
+              {isSent ? (
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="text-center space-y-6"
+                >
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.1, 1],
+                      rotate: [0, 10, -10, 0]
+                    }}
+                    transition={{ repeat: 2, duration: 0.5 }}
+                  >
+                    <div className="text-6xl">✔️</div>
+                  </motion.div>
+                  <p className="text-slate-700">Thanks for your message! I'll get back to you soon.</p>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setIsSent(false)}
+                    className="bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    Send Another
+                  </motion.button>
+                </motion.div>
+              ) : (
+                <form 
+                  className="space-y-4"
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    setIsSending(true);
+                    setError(null);
+                    
+                    try {
+                      await emailjs.sendForm(
+                        'service_s3g3rdc',   // Replace with your EmailJS service ID
+                        'template_i8nrclo',  // Replace with your EmailJS template ID
+                        e.currentTarget,
+                        'FPDB-4RT3P9txHwjZ'    // Replace with your EmailJS public key
+                      );
+                      
+                      setIsSent(true);
+                      (e.target as HTMLFormElement).reset();
+                    } catch (err) {
+                      setError('Failed to send message. Please try again.');
+                    } finally {
+                      setIsSending(false);
+                    }
+                  }}
+                >
+                  <motion.div
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.1 }}
+                  >
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Name</label>
+                    <input
+                      name="name"
+                      type="text"
+                      className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="Your Name"
+                      required
+                    />
+                  </motion.div>
+                  
+                  <motion.div
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                    <input
+                      name="email"
+                      type="email"
+                      className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="your@email.com"
+                      required
+                    />
+                  </motion.div>
+                  
+                  <motion.div
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                    <textarea
+                      name="message"
+                      rows={4}
+                      className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      placeholder="Tell me about your project or opportunity..."
+                      required
+                    />
+                  </motion.div>
+
+                  <input type="hidden" name="to_email" value="bahergamalelshaikh@gmail.com" />
+                  
+                  {error && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-red-500 text-sm p-2 bg-red-50 rounded-lg"
+                    >
+                      {error}
+                    </motion.div>
+                  )}
+                  
+                  <motion.button
+                    type="submit"
+                    disabled={isSending}
+                    whileHover={!isSending ? { scale: 1.02 } : {}}
+                    whileTap={!isSending ? { scale: 0.98 } : {}}
+                    className={`w-full py-2 px-4 rounded-lg transition-colors ${
+                      isSending ? 'bg-blue-400' : 'bg-blue-600 hover:bg-blue-700'
+                    } text-white`}
+                  >
+                    {isSending ? (
+                      <motion.span
+                        animate={{ rotate: 360 }}
+                        transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                        style={{ display: 'inline-block' }}
+                      >
+                        ⏳
+                      </motion.span>
+                    ) : (
+                      'Send Message'
+                    )}
+                  </motion.button>
+                </form>
+              )}
             </div>
           </div>
         </div>

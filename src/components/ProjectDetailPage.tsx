@@ -25,9 +25,10 @@ import {
   Cloud,
   Settings,
   FileText,
-  Download,
+  // Download,
   Layers,
-  RefreshCcw
+  RefreshCcw,
+  Clock
 } from 'lucide-react';
 
 interface ProjectDetailPageProps {
@@ -158,7 +159,7 @@ export function ProjectDetailPage({ onBack }: ProjectDetailPageProps) {
     { label: 'API Endpoints', value: '75+', icon: Server },
     { label: 'Database Tables', value: '10', icon: Database },
     { label: 'Test Coverage', value: '98%', icon: CheckCircle },
-    { label: 'Concurrent Users', value: '50K+', icon: Zap },
+    { label: 'Service Uptime', value: '99.9%', icon: Clock },
     { label: 'Security Rating', value: 'A+', icon: Shield }
   ];
 
