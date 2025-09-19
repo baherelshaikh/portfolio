@@ -299,7 +299,7 @@ function App() {
             </div>
             
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden lg:flex space-x-8">
               {['About', 'Skills', 'Graduation Project', 'Projects', 'Experience', 'Education', 'Certifications', 'Contact'].map((item) => (
                 <button
                   key={item}
@@ -325,7 +325,7 @@ function App() {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-md text-slate-600 hover:text-blue-600"
+              className="lg:hidden p-2 rounded-md text-slate-600 hover:text-blue-600"
             >
               <div className="w-6 h-6 flex flex-col justify-center items-center">
                 <span className={`block w-5 h-0.5 bg-current transition-all ${isMenuOpen ? 'rotate-45 translate-y-1' : ''}`} />
@@ -338,7 +338,7 @@ function App() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white border-t border-slate-200">
+          <div className="lg:hidden bg-white border-t border-slate-200">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {['About', 'Skills', 'Projects', 'Experience', 'Education', 'Certifications', 'Contact'].map((item) => (
                 <button
