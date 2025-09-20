@@ -340,13 +340,19 @@ function App() {
         {isMenuOpen && (
           <div className="lg:hidden bg-white border-t border-slate-200">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {['About', 'Skills', 'Projects', 'Experience', 'Education', 'Certifications', 'Contact'].map((item) => (
+              {['About', 'Skills','Graduation Project', 'Projects', 'Experience', 'Education', 'Certifications', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase())}
                   className="block w-full text-left px-3 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-md"
                 >
-                  {item}
+                  {item === 'Graduation Project' ? (
+                    <span className="text-yellow-600 font-semibold">
+                      🎓 {item}
+                    </span>
+                  ) : (
+                    item
+                  )}
                 </button>
               ))}
             </div>
@@ -378,11 +384,8 @@ function App() {
                   B.Sc. in Computer Science – Tanta University
                 </p>
               </div>
-              <p className="text-lg text-slate-500 max-w-3xl mx-auto mb-12 leading-relaxed">
-                I'm a Back-End Engineer and Technical Project Supervisor at ITC, where I support DEPI students across a variety of projects. I specialize in building secure and scalable back-end systems using Node.js, Express, SQL/NoSQL, and more. 
-
-I guide students through debugging and system design, applying my expertise in programming, data analysis, and software development. I’m also skilled in JavaScript, python, Java, C++, and more.
-              </p>
+              <p className="text-sm sm:text-base lg:text-lg text-gray-600 px-4 sm:px-0 max-w-xl sm:max-w-2xl lg:max-w-3xl mx-auto mb-10 leading-loose tracking-wide transition-all duration-300 ease-in-out hover:text-gray-800">
+                I focus on blending innovation with precision to build practical solutions. Through hands-on projects and problem-solving, I’ve gained practical experience that helps teams deliver reliable systems and drive real progress. I aim to turn potential into measurable success.              </p>
             </div>
             
             <div className="flex justify-center space-x-4 mb-12">
