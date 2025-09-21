@@ -491,39 +491,31 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
+      <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Skills & Technologies</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Technical expertise developed through professional experience, academic study, and continuous learning
             </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skills.map((skill, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex items-center mb-4">
-                  <skill.icon className="h-8 w-8 text-blue-600 mr-3" />
-                  <h3 className="text-lg font-medium text-slate-800">{skill.name}</h3>
-                </div>
-                <div className="mb-2">
-                  <div className="flex justify-between text-sm text-slate-600 mb-1">
-                    <span>Proficiency</span>
-                    <span>{skill.level}%</span>
-                  </div>
-                  <div className="w-full bg-slate-200 rounded-full h-2">
-                    <div 
-                      className="bg-blue-600 h-2 rounded-full transition-all duration-1000"
-                      style={{ width: `${skill.level}%` }}
-                    />
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
-      </section>
+
+        <div className="flex flex-wrap justify-center gap-4">
+          {skills.map((skill, index) => (
+            <motion.span
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="inline-flex items-center bg-white rounded-full px-6 py-3 shadow-sm hover:shadow-md transition-all duration-300 hover:bg-blue-50 border border-slate-100 hover:border-blue-200"
+            >
+              <skill.icon className="h-6 w-6 text-blue-700 mr-3" />
+              <span className="text-lg font-medium text-slate-900">{skill.name}</span>
+            </motion.span>
+          ))}
+        </div>
+      </div>
+    </section>
 
       {/* Graduation Projects Section */}
       <section id="graduation project">
@@ -803,115 +795,7 @@ function App() {
                 </ul>
               </div>
             </div>
-            
-            {/* <div className="bg-slate-50 rounded-2xl p-8 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-800 mb-6">Send a Message</h3>
-              <form className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">Name</label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Your Name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
-                  <textarea
-                    rows={4}
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Tell me about your project or opportunity..."
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  Send Message
-                </button>
-              </form>
-            </div> */}
-            {/* <div className="bg-slate-50 rounded-2xl p-8 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-800 mb-6">Send a Message</h3>
-              <form 
-                className="space-y-4"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setIsAnimating(true);
-                  const subject = `Message from ${(e.currentTarget.elements.namedItem('name') as HTMLInputElement).value}`;
-                  const body = `${(e.currentTarget.elements.namedItem('message') as HTMLTextAreaElement).value}\n\nFrom: ${(e.currentTarget.elements.namedItem('name') as HTMLInputElement).value}\nEmail: ${(e.currentTarget.elements.namedItem('email') as HTMLInputElement).value}`;
-                  window.location.href = `mailto:bahergamalelshaikh@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                  setTimeout(() => setIsAnimating(false), 2000);
-                }}
-              >
-                <motion.div
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.1 }}
-                >
-                  <label className="block text-sm font-medium text-slate-700 mb-2">Name</label>
-                  <input
-                    name="name"
-                    type="text"
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Your Name"
-                    required
-                  />
-                </motion.div>
-                
-                <motion.div
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
-                  <input
-                    name="email"
-                    type="email"
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="your@email.com"
-                    required
-                  />
-                </motion.div>
-                
-                <motion.div
-                  initial={{ x: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
-                  <textarea
-                    name="message"
-                    rows={4}
-                    className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Tell me about your project or opportunity..."
-                    required
-                  />
-                </motion.div>
-                
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  animate={isAnimating ? {
-                    rotate: [0, 5, -5, 5, -5, 0],
-                    scale: [1, 1.05, 1],
-                    transition: { duration: 0.5 }
-                  } : {}}
-                  className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
-                >
-                  {isAnimating ? 'Opening Email... ✉️' : 'Send Message'}
-                </motion.button>
-              </form>
-            </div> */}
+
             <div className="bg-slate-50 rounded-2xl p-8 shadow-sm">
               <h3 className="text-xl font-bold text-slate-800 mb-6">
                 {isSent ? 'Message Sent!' : 'Send a Message'}
@@ -961,7 +845,7 @@ function App() {
                       setIsSent(true);
                       (e.target as HTMLFormElement).reset();
                     } catch (err) {
-                      setError('Failed to send message. Please try again.');
+                      setError('Failed to send message. Please try again.'+ err);
                     } finally {
                       setIsSending(false);
                     }
