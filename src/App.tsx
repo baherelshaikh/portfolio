@@ -84,7 +84,44 @@ function App() {
   ];
 
   const projects = [
-     {
+    {
+      title: 'SweetTalkr - Real-Time Chat Application',
+      description: 'A scalable, full-stack MVP chat app enabling secure, real-time messaging, and message receipts, built with Node.js/Express backend and Vite frontend, deployed via Docker for seamless cross-platform use.',
+      tech: [
+      'Node.js',
+      'Express.js',
+      'Socket.IO',
+      'PostgreSQL',
+      'pg',
+      'JSON Web Token',
+      'bcryptjs',
+      'Vite',
+      'Docker',
+      'Docker Compose',
+      'Nginx',
+      'uuid',
+      'cors',
+      'dotenv',
+      'helmet',
+      'express-async-errors',
+      'express-rate-limit',
+      'express-validator',
+      'http-status-codes'
+      ],
+      features: [
+      'Real-Time Text Messaging with Socket.IO',
+      'Chats and User Management',
+      'Message Receipts (Delivered/Read Statuses)',
+      'JWT-Based Authentication and Password Hashing',
+      'Custom Error Handling and Security Middleware',
+      'PostgreSQL Integration with Scalable Schema',
+      'Containerized Deployment for Easy Setup',
+      'MVP with Planned Expansions (Voice/Video Calls)'
+      ],
+      github: 'https://github.com/baherelshaikh/sweettakr',
+      demo: '#'
+      },
+    {
     title: 'Secure RESTful API Backend',
     description:
       'Robust and secure backend system with full CRUD functionality, JWT-based authentication, error handling, and MongoDB integration for managing users, products, reviews, and orders.',
@@ -112,32 +149,32 @@ function App() {
     github: 'https://github.com/baherelshaikh/E-commerce-Back-end',
     demo: '#'
   },
-     {
-        title: 'Job Listings API',
-        description:
-          'RESTful API for managing job listings with authentication, CRUD operations, and integrated Swagger UI for interactive API documentation and testing.',
-        tech: [
-          'Node.js',
-          'Express.js',
-          'MongoDB',
-          'Mongoose',
-          'JWT',
-          'bcrypt',
-          'Helmet',
-          'Express Validator',
-          'Express Rate Limit',
-          'Swagger UI'
-        ],
-        features: [
-          'User Authentication with JWT',
-          'CRUD Operations for Job Listings',
-          'Security Middleware (Rate Limiting, Helmet, Validation)',
-          'Error Handling Middleware',
-          'Swagger UI for API Documentation and Testing'
-        ],
-        github: 'https://github.com/baherelshaikh/Jobs-API', 
-        demo: '#'
-    },
+    //  {
+    //     title: 'Job Listings API',
+    //     description:
+    //       'RESTful API for managing job listings with authentication, CRUD operations, and integrated Swagger UI for interactive API documentation and testing.',
+    //     tech: [
+    //       'Node.js',
+    //       'Express.js',
+    //       'MongoDB',
+    //       'Mongoose',
+    //       'JWT',
+    //       'bcrypt',
+    //       'Helmet',
+    //       'Express Validator',
+    //       'Express Rate Limit',
+    //       'Swagger UI'
+    //     ],
+    //     features: [
+    //       'User Authentication with JWT',
+    //       'CRUD Operations for Job Listings',
+    //       'Security Middleware (Rate Limiting, Helmet, Validation)',
+    //       'Error Handling Middleware',
+    //       'Swagger UI for API Documentation and Testing'
+    //     ],
+    //     github: 'https://github.com/baherelshaikh/Jobs-API', 
+    //     demo: '#'
+    // },
      {
       title: 'Product Management API',
       description:
