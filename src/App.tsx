@@ -3,6 +3,7 @@ import { GraduationProject } from './components/GraduationProject';
 import { ProjectDetailPage } from './components/ProjectDetailPage';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
+
 import { 
   Code, 
   Database, 
@@ -34,7 +35,14 @@ import {
   Bot, 
   Sigma, 
   Trophy,
+  BadgeCheck,
+  Verified,
+  CheckCircle,
+  Check
 } from 'lucide-react';
+import { link, title } from 'framer-motion/client';
+// import { SiMicrosoft } from "react-icons/si";
+import { BsMicrosoft, BsGoogle } from 'react-icons/bs';
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -259,6 +267,54 @@ function App() {
 
   const certifications = [
     {
+      title: "Performance Optimization and Scalability",
+      issuer: "Microsoft",
+      link: "https://coursera.org/share/8b8bfa67be564fa8a9bb9541d2d18be5",
+      icon: BsMicrosoft
+    }, 
+    {
+      title: "Security and Authentication",
+      issuer: "Microsoft",
+      link: "https://coursera.org/share/55cdd3187a6c03f3449011704211f19c",
+      icon: BsMicrosoft
+    }, 
+    {
+      title: "Database Integration and Management",
+      issuer: "Microsoft",
+      link: "https://coursera.org/share/88c03d5c6d2091af71ea858a9b8ff250",
+      icon: BsMicrosoft
+    }, 
+    {
+      title: "Back-End Development with .NET",
+      issuer: "Microsoft",
+      link: "https://coursera.org/share/89a4573210f3929a2b80b1af4c1f7bd4",
+      icon: BsMicrosoft
+    }, 
+    {
+      title: "Introduction to Programming With C#",
+      issuer: "Microsoft",
+      link: "https://coursera.org/share/a0c54eb6ff536135173c755f112b27af",
+      icon: BsMicrosoft
+    }, 
+    {
+      title: "Foundations of Coding Back-End",
+      issuer: "Microsoft",
+      link: "https://coursera.org/share/73664264074b8b81c1f9ecb0442ca8e9",
+      icon: BsMicrosoft
+    },
+    {
+      title: 'Manage Security Risks',
+      issuer: 'Google',
+      link: 'https://www.coursera.org/account/accomplishments/verify/A4JG6PFUP8JB?utm_product=course',
+      icon: BsGoogle
+    },
+    {
+      title: 'Foundations of Cybersecurity',
+      issuer: 'Google',
+      link: 'https://www.coursera.org/account/accomplishments/verify/KKLKGFKMSKJA?utm_product=course',
+      icon: BsGoogle
+    },
+    {
       title: 'DEPI Business English Certificate',
       issuer: 'DEPI Program',
       link: 'https://drive.google.com/file/d/1-dlHJ3w6Sa6gYFvCRDgbnfq08pxWuYyb/view?usp=drive_link',
@@ -276,18 +332,6 @@ function App() {
       link: 'https://drive.google.com/file/d/1_AxH780VmGPNZupwXr3XJJs93RVa1MJt/view?usp=sharing',
       icon: Trophy 
     },
-    {
-      title: 'Manage Security Risks',
-      issuer: 'Google (Coursera)',
-      link: 'https://www.coursera.org/account/accomplishments/verify/A4JG6PFUP8JB?utm_product=course',
-      icon: Lock
-    },
-    {
-      title: 'Foundations of Cybersecurity',
-      issuer: 'Google (Coursera)',
-      link: 'https://www.coursera.org/account/accomplishments/verify/KKLKGFKMSKJA?utm_product=course',
-      icon: Shield
-    }
   ];
 
   useEffect(() => {
@@ -331,7 +375,11 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Code className="h-8 w-8 text-blue-600" />
+              {/* <Code className="h-8 w-8 text-blue-600" /> */}
+              <img className="h-8 w-8 text-blue-400 "
+                src="/src/public/icons/favicon.ico"
+                alt="Logo"
+              />
               <span className="ml-2 text-xl font-bold text-slate-800">Baher El-shaikh</span>
             </div>
             
@@ -494,17 +542,17 @@ function App() {
               <h3 className="text-xl font-bold text-slate-800 mb-6">What I Do</h3>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <Users className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-medium text-slate-800">Technical Project Supervision</h4>
-                    <p className="text-sm text-slate-600">Supporting DEPI students across all project types and troubleshooting complex bugs</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
                   <Server className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
                   <div>
                     <h4 className="font-medium text-slate-800">Backend Development</h4>
                     <p className="text-sm text-slate-600">Building scalable APIs with Node.js, Express, and modern database systems</p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <Users className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-medium text-slate-800">Technical Project Supervision</h4>
+                    <p className="text-sm text-slate-600">Supporting DEPI students across all project types and troubleshooting complex bugs</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3"> 
@@ -748,7 +796,12 @@ function App() {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-bold text-slate-800 mb-2">{cert.title}</h3>
-                    <p className="text-slate-600 mb-4">{cert.issuer}</p>
+                    <div className="flex items-center">
+                      <p className="text-slate-600 mb-4">{cert.issuer}</p>
+                      {cert.icon === BsMicrosoft || cert.icon === BsGoogle ? (
+                        <BadgeCheck className="h-4 w-4 bg-blue-500 text-white rounded-full mb-4 ml-1" />
+                      ) : ("")}
+                    </div>
                     <a
                       href={cert.link}
                       target="_blank"
@@ -977,7 +1030,11 @@ function App() {
       <footer className="bg-slate-800 text-white py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex justify-center items-center mb-4">
-            <Code className="h-6 w-6 text-blue-400 mr-2" />
+            {/* <Code className="h-6 w-6 text-blue-400 mr-2" /> */}
+            <img className="h-8 w-8 text-blue-400 mr-2"
+                src="/src/public/icons/favicon.ico"
+                alt="Logo"
+              />
             <span className="text-lg font-medium">Baher El-shaikh</span>
           </div>
           <p className="text-slate-400 mb-6">
