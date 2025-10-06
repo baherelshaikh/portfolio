@@ -377,7 +377,7 @@ function App() {
             <div className="flex items-center">
               {/* <Code className="h-8 w-8 text-blue-600" /> */}
               <img className="h-8 w-8 text-blue-400 "
-                src="/src/public/icons/favicon.ico"
+                src="/icons/favicon.ico"
                 alt="Logo"
               />
               <span className="ml-2 text-xl font-bold text-slate-800">Baher El-shaikh</span>
@@ -1032,7 +1032,7 @@ function App() {
           <div className="flex justify-center items-center mb-4">
             {/* <Code className="h-6 w-6 text-blue-400 mr-2" /> */}
             <img className="h-8 w-8 text-blue-400 mr-2"
-                src="/src/public/icons/favicon.ico"
+                src="/icons/favicon.ico"
                 alt="Logo"
               />
             <span className="text-lg font-medium">Baher El-shaikh</span>
