@@ -38,7 +38,8 @@ import {
   BadgeCheck,
   Verified,
   CheckCircle,
-  Check
+  Check,
+  ShieldCheck
 } from 'lucide-react';
 import { link, title } from 'framer-motion/client';
 // import { SiMicrosoft } from "react-icons/si";
@@ -799,7 +800,10 @@ function App() {
                     <div className="flex items-center">
                       <p className="text-slate-600 mb-4">{cert.issuer}</p>
                       {cert.icon === BsMicrosoft || cert.icon === BsGoogle ? (
-                        <BadgeCheck className="h-4 w-4 bg-blue-500 text-white rounded-full mb-4 ml-1" />
+                        <img className="h-4 w-4 mb-4 ml-1"
+                          src="/icons/verification/favicon.ico"
+                          alt="Logo"
+                        />
                       ) : ("")}
                     </div>
                     <a
