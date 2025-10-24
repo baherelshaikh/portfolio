@@ -44,6 +44,8 @@ import {
 import { link, title } from 'framer-motion/client';
 // import { SiMicrosoft } from "react-icons/si";
 import { BsMicrosoft, BsGoogle } from 'react-icons/bs';
+import Marquee from "react-fast-marquee";
+
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -268,6 +270,12 @@ function App() {
 
   const certifications = [
     {
+      title: "Deployment and DevOps",
+      issuer: "Microsoft",
+      link: "https://coursera.org/share/5906e015ec4f7449179cd5d543eb3123",
+      icon: BsMicrosoft
+    },
+    {
       title: "Performance Optimization and Scalability",
       issuer: "Microsoft",
       link: "https://coursera.org/share/8b8bfa67be564fa8a9bb9541d2d18be5",
@@ -289,6 +297,12 @@ function App() {
       title: "Back-End Development with .NET",
       issuer: "Microsoft",
       link: "https://coursera.org/share/89a4573210f3929a2b80b1af4c1f7bd4",
+      icon: BsMicrosoft
+    },
+    {
+      title: "Data Structures and Algorithms",
+      issuer: "Microsoft",
+      link: "https://coursera.org/share/f1ea1e85e003b6c3568191eae9235ac3",
       icon: BsMicrosoft
     }, 
     {
@@ -576,7 +590,7 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
+      {/* <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Skills & Technologies</h2>
@@ -600,6 +614,33 @@ function App() {
           ))}
         </div>
       </div>
+    </section> */}
+    <section
+      id="skills"
+      className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto text-center mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+          Skills & Technologies
+        </h2>
+        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          Technical expertise developed through professional experience, academic
+          study, and continuous learning
+        </p>
+      </div>
+
+      {/* Marquee */}
+      <Marquee gradient={true} gradientColor={[248, 250, 252]} speed={40} pauseOnHover={true}>
+        {skills.map((skill, index) => (
+          <div
+            key={index}
+            className="flex items-center bg-white rounded-full px-6 py-3 mx-3 shadow-sm border border-slate-100 hover:border-blue-200 transition-all duration-300"
+          >
+            <skill.icon className="h-6 w-6 text-blue-700 mr-3" />
+            <span className="text-lg font-medium text-slate-900">{skill.name}</span>
+          </div>
+        ))}
+      </Marquee>
     </section>
 
       {/* Graduation Projects Section */}
