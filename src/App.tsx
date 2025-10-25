@@ -270,6 +270,13 @@ function App() {
 
   const certifications = [
     {
+      // title: "Microsoft 𝐁𝐚𝐜𝐤-𝐄𝐧𝐝 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫 𝐏𝐫𝐨𝐟𝐞𝐬𝐬𝐢𝐨𝐧𝐚𝐥 𝐂𝐞𝐫𝐭𝐢𝐟𝐢𝐜𝐚𝐭𝐞",
+      title: "Microsoft Back-End Developer Professional Certificate",
+      issuer: "Microsoft",
+      link: "https://coursera.org/share/0c5922a193a6bca11d4c534debfe52df",
+      icon: BsMicrosoft
+    },
+    {
       title: "Deployment and DevOps",
       issuer: "Microsoft",
       link: "https://coursera.org/share/5906e015ec4f7449179cd5d543eb3123",
