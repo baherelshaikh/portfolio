@@ -133,6 +133,76 @@ function App() {
       demo: '#'
       },
     {
+      title: 'ShopCore - Scalable E-commerce Backend System',
+      description:
+        'ShopCore is a production-grade backend for e-commerce platforms, built with Node.js, Express, PostgreSQL, and Redis. It provides a complete RESTful API for authentication, product catalogs, carts, orders, payments, and shipments, featuring advanced caching, structured logging, email notifications, and Swagger-based documentation for developers.',
+      //   'Node.js',
+      //   'Express.js',
+      //   'PostgreSQL',
+      //   'Sequelize ORM',
+      //   'Redis (ioredis)',
+      //   'JWT (jsonwebtoken)',
+      //   'bcryptjs',
+      //   'Nodemailer',
+      //   'Swagger (swagger-jsdoc, swagger-ui-express)',
+      //   'Winston',
+      //   'dotenv',
+      //   'helmet',
+      //   'express-rate-limit',
+      //   'hpp',
+      //   'xss',
+      //   'cors',
+      //   'cookie-parser',
+      //   'express-validator',
+      //   'http-status-codes',
+      //   'jest',
+      //   'supertest',
+      //   'nodemon',
+      //   'GitHub Actions'
+      // ],
+      tech: [
+        'Node.js',
+        'Express.js',
+        'PostgreSQL',
+        'Sequelize ORM',
+        'Redis (ioredis)',
+        'JWT (jsonwebtoken)',
+        'bcryptjs',
+        'Nodemailer',
+        'Swagger (swagger-jsdoc, swagger-ui-express)',
+        'Winston',
+        'dotenv',
+        'helmet',
+        'express-rate-limit',
+        'hpp',
+        'xss',
+        'cors',
+        'cookie-parser',
+        'express-validator',
+        'http-status-codes',
+        'jest',
+        'supertest',
+        'nodemon'
+      ],
+      features: [
+        'Secure User Authentication with JWT and Role-Based Access Control',
+        'Full CRUD APIs for Users, Roles, Products, Categories, Variants, and Reviews',
+        'Shopping Cart and Order Management with Atomic Transactions',
+        'Integrated Payment and Shipment Tracking Services',
+        `Comprehensive ERD illustrating complete database relationships between users, products, orders, and related entities`,
+        `Manual SQL setup file for PostgreSQL providing full schema creation commands and database initialization scripts`,
+        'Advanced Redis Caching (Cache-Aside, Read-Through, Write-Through, Manual) with consistency policies',
+        'Structured Logging with Winston for All Operations',
+        'Email Notifications via Nodemailer with Gmail SMTP',
+        'Swagger-Integrated API Documentation for Interactive Testing',
+        'Comprehensive Unit and Integration Testing (Jest + Supertest)',
+        'Security Middleware Stack: Helmet, Rate Limiting, XSS Protection, CORS, and HPP',
+        'CI/CD Pipeline with Automated Testing and Deployment via GitHub Actions'
+      ],
+      github: 'https://github.com/baherelshaikh/ShopCore',
+      demo: '#'
+    },  
+    {
     title: 'Secure RESTful API Backend',
     description:
       'Robust and secure backend system with full CRUD functionality, JWT-based authentication, error handling, and MongoDB integration for managing users, products, reviews, and orders.',
@@ -656,7 +726,7 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+      {/* <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Featured Projects</h2>
@@ -718,6 +788,88 @@ function App() {
                       </a>
                     )}
                   </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section> */}
+      <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-5xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+              Featured Projects
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              A showcase of projects demonstrating my expertise in backend development and technical problem-solving
+            </p>
+          </div>
+
+          {/* Vertical Project List */}
+          <div className="space-y-10">
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                className="bg-slate-50 border border-slate-200 rounded-2xl p-8 hover:shadow-lg transition-all duration-300"
+              >
+                {/* Title */}
+                <h3 className="text-2xl font-semibold text-slate-800 mb-3">
+                  {project.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-slate-600 text-base mb-6 leading-relaxed">
+                  {project.description}
+                </p>
+
+                {/* Features */}
+                <div className="mb-6">
+                  <h4 className="text-sm font-medium text-slate-700 mb-2">Key Features:</h4>
+                  <ul className="list-disc list-inside text-slate-600 text-sm space-y-2">
+                    {project.features.map((feature, i) => (
+                      <li key={i} className="flex items-center">
+                        <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-2 flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Technologies */}
+                <div className="mb-8">
+                  <h4 className="text-sm font-medium text-slate-700 mb-2">Technologies:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, i) => (
+                      <span key={i} className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Links */}
+                <div className="flex space-x-6 pt-4 border-t border-slate-200">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-sm text-slate-600 hover:text-blue-600 transition-colors"
+                  >
+                    <Github className="h-4 w-4 mr-1" />
+                    Code
+                  </a>
+                  {project.demo !== '#' && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center text-sm text-slate-600 hover:text-blue-600 transition-colors"
+                    >
+                      <ExternalLink className="h-4 w-4 mr-1" />
+                      Demo
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
