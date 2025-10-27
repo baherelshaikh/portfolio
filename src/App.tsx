@@ -136,30 +136,6 @@ function App() {
       title: 'ShopCore - Scalable E-commerce Backend System',
       description:
         'ShopCore is a production-grade backend for e-commerce platforms, built with Node.js, Express, PostgreSQL, and Redis. It provides a complete RESTful API for authentication, product catalogs, carts, orders, payments, and shipments, featuring advanced caching, structured logging, email notifications, and Swagger-based documentation for developers.',
-      //   'Node.js',
-      //   'Express.js',
-      //   'PostgreSQL',
-      //   'Sequelize ORM',
-      //   'Redis (ioredis)',
-      //   'JWT (jsonwebtoken)',
-      //   'bcryptjs',
-      //   'Nodemailer',
-      //   'Swagger (swagger-jsdoc, swagger-ui-express)',
-      //   'Winston',
-      //   'dotenv',
-      //   'helmet',
-      //   'express-rate-limit',
-      //   'hpp',
-      //   'xss',
-      //   'cors',
-      //   'cookie-parser',
-      //   'express-validator',
-      //   'http-status-codes',
-      //   'jest',
-      //   'supertest',
-      //   'nodemon',
-      //   'GitHub Actions'
-      // ],
       tech: [
         'Node.js',
         'Express.js',
@@ -795,7 +771,7 @@ function App() {
         </div>
       </section> */}
       <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
@@ -887,7 +863,7 @@ function App() {
             </p>
           </div>
           
-          <div className="space-y-8">
+          <div className="space-y-10">
             {experience.map((job, index) => (
               <div key={index} className="bg-white rounded-xl p-8 shadow-sm">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
