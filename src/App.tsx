@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { GraduationProject } from './components/GraduationProject';
 import { ProjectDetailPage } from './components/ProjectDetailPage';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 
 import { 
@@ -53,7 +53,9 @@ function App() {
   const [showProjectDetail, setShowProjectDetail] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
+  const [showAll, setShowAll] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showAllSkills, setShowAllSkills] = useState(false);
 
   const handleViewDetails = () => {
     setShowProjectDetail(true);
@@ -436,6 +438,10 @@ function App() {
     setIsMenuOpen(false);
   };
 
+  const toggleAllSkills = () => {
+    setShowAllSkills(prev => !prev);
+  };
+
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Navigation */}
@@ -668,7 +674,7 @@ function App() {
         </div>
       </div>
     </section> */}
-    <section
+    {/* <section
       id="skills"
       className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white overflow-hidden"
     >
@@ -683,7 +689,7 @@ function App() {
       </div>
 
       {/* Marquee */}
-      <Marquee gradient={true} gradientColor={[248, 250, 252]} speed={40} pauseOnHover={true}>
+      {/* <Marquee gradient={true} gradientColor={[248, 250, 252]} speed={40} pauseOnHover={true}>
         {skills.map((skill, index) => (
           <div
             key={index}
@@ -692,9 +698,99 @@ function App() {
             <skill.icon className="h-6 w-6 text-blue-700 mr-3" />
             <span className="text-lg font-medium text-slate-900">{skill.name}</span>
           </div>
-        ))}
-      </Marquee>
+        ))} */}
+      {/* </Marquee> */}
+    {/* </section> */} 
+    <section
+      id="skills"
+      className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto text-center mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+          Skills &amp; Technologies
+        </h2>
+        <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
+          Technical expertise developed through professional experience, academic
+          study, and continuous learning
+        </p>
+      </div>
+
+      <AnimatePresence mode="wait">
+        {!showAllSkills ? (
+          <motion.div
+            key="marquee"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="mb-8"
+          >
+            <Marquee gradient={true} gradientColor={[248, 250, 252]} speed={40} pauseOnHover={true}>
+              {skills.map((skill, index) => (
+                <div
+                  key={index}
+                  className="flex items-center bg-white rounded-full px-6 py-3 mx-3 shadow-sm border border-slate-100 hover:border-blue-200 transition-all duration-300"
+                >
+                  <skill.icon className="h-6 w-6 text-blue-700 mr-3" />
+                  <span className="text-lg font-medium text-slate-900">{skill.name}</span>
+                </div>
+              ))}
+            </Marquee>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="grid"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto mb-8"
+          >
+            {skills.map((skill, i) => (
+              <motion.div
+              //   key={i}
+              //   initial={{ opacity: 0, scale: 0.9 }}
+              //   animate={{ opacity: 1, scale: 1 }}
+              //   transition={{ delay: i * 0.05 }}
+              //   className="p-4 rounded-lg bg-white shadow-sm hover:shadow-md transition-shadow border border-slate-100"
+              >
+                {/* <div className="flex items-center space-x-3 mb-3">
+                  <skill.icon className="h-6 w-6 text-blue-600" />
+                  <div className="font-medium text-slate-800">{skill.name}</div>
+                  <div className="ml-auto text-sm text-slate-600">{skill.level}%</div>
+                </div>
+                <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                  <motion.div
+                    className="h-full bg-blue-600"
+                    initial={{ width: 0 }}
+                    animate={{ width: `${skill.level}%` }}
+                    transition={{ duration: 0.6, delay: i * 0.05 }}
+                  />
+                </div> */}
+                <div
+                  key={i}
+                  className="flex items-center bg-white rounded-full px-6 py-3 mx-3 shadow-sm border border-slate-100 hover:border-blue-200 transition-all duration-300"
+                >
+                  <skill.icon className="h-6 w-6 text-blue-700 mr-3" />
+                  <span className="text-lg font-medium text-slate-900">{skill.name}</span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Moved button here and improved styling */}
+      <div className="text-center mt-8">
+        <button
+          onClick={toggleAllSkills}
+          className="inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-blue-600 text-white text-base font-medium hover:bg-blue-700 transition-all transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg"
+        >
+          <span>{showAllSkills ? 'Show less' : 'View all skills'}</span>
+        </button>
+      </div>
     </section>
+    
 
       {/* Graduation Projects Section */}
       <section id="graduation project">
