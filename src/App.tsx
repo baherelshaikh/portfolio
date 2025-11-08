@@ -565,7 +565,7 @@ function App() {
 
              {/* CV / Resume link (desktop) */}
               <a
-                href="https://drive.google.com/file/d/1_3DWScVvahpoXb2rI0PNo0dHHzNcfb2K/view?usp=sharing"
+                href="https://drive.google.com/file/d/1Max720o14nldNanDs4l0aapC1IcLwWgz/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Baher El-shaikh - Back-End Engineer"
@@ -613,7 +613,7 @@ function App() {
 
               {/* CV / Resume link (mobile) */}
               <a
-                href="https://drive.google.com/file/d/1_3DWScVvahpoXb2rI0PNo0dHHzNcfb2K/view?usp=sharing"
+                href="https://drive.google.com/file/d/1Max720o14nldNanDs4l0aapC1IcLwWgz/view?usp=sharing"
                 target="_blank"
                 className="block w-full text-left px-3 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-md"
               >
