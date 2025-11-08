@@ -542,7 +542,7 @@ function App() {
             </div>
             
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex space-x-8">
+            <div className="hidden lg:flex space-x-8 items-center">
               {['About', 'Skills', 'Graduation Project', 'Projects', 'Experience', 'Education', 'Certifications', 'Contact'].map((item) => (
                 <button
                   key={item}
@@ -562,46 +562,74 @@ function App() {
                   )}
                 </button>
               ))}
+
+             {/* CV / Resume link (desktop) */}
+             <a
+               href="../CV/Baher El-shaikh - Back-End Engineer.pdf"
+               download
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Baher El-shaikh - Back-End Engineer"
+               className="inline-flex items-center space-x-2 px-3 py-2 bg-slate-50 border border-slate-100 rounded-full text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition"
+             >
+               <FileText className="h-4 w-4" />
+               <span className="hidden md:inline">CV</span>
+             </a>
             </div>
 
 
             {/* Mobile menu button */}
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 rounded-md text-slate-600 hover:text-blue-600"
-            >
-              <div className="w-6 h-6 flex flex-col justify-center items-center">
-                <span className={`block w-5 h-0.5 bg-current transition-all ${isMenuOpen ? 'rotate-45 translate-y-1' : ''}`} />
-                <span className={`block w-5 h-0.5 bg-current mt-1 transition-all ${isMenuOpen ? 'opacity-0' : ''}`} />
-                <span className={`block w-5 h-0.5 bg-current mt-1 transition-all ${isMenuOpen ? '-rotate-45 -translate-y-1' : ''}`} />
-              </div>
-            </button>
-          </div>
-        </div>
+               onClick={() => setIsMenuOpen(!isMenuOpen)}
+               className="lg:hidden p-2 rounded-md text-slate-600 hover:text-blue-600"
+             >
+               <div className="w-6 h-6 flex flex-col justify-center items-center">
+                 <span className={`block w-5 h-0.5 bg-current transition-all ${isMenuOpen ? 'rotate-45 translate-y-1' : ''}`} />
+                 <span className={`block w-5 h-0.5 bg-current mt-1 transition-all ${isMenuOpen ? 'opacity-0' : ''}`} />
+                 <span className={`block w-5 h-0.5 bg-current mt-1 transition-all ${isMenuOpen ? '-rotate-45 -translate-y-1' : ''}`} />
+               </div>
+             </button>
+           </div>
+         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-slate-200">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {['About', 'Skills','Graduation Project', 'Projects', 'Experience', 'Education', 'Certifications', 'Contact'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className="block w-full text-left px-3 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-md"
-                >
-                  {item === 'Graduation Project' ? (
-                    <span className="text-yellow-600 font-semibold">
-                      🎓 {item}
-                    </span>
-                  ) : (
-                    item
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-      </nav>
+         {/* Mobile Navigation */}
+         {isMenuOpen && (
+           <div className="lg:hidden bg-white border-t border-slate-200">
+             <div className="px-2 pt-2 pb-3 space-y-1">
+               {['About', 'Skills','Graduation Project', 'Projects', 'Experience', 'Education', 'Certifications', 'Contact'].map((item) => (
+                 <button
+                   key={item}
+                   onClick={() => scrollToSection(item.toLowerCase())}
+                   className="block w-full text-left px-3 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-md"
+                 >
+                   {item === 'Graduation Project' ? (
+                     <span className="text-yellow-600 font-semibold">
+                       🎓 {item}
+                     </span>
+                   ) : (
+                     item
+                   )}
+                 </button>
+               ))}
+
+              {/* CV / Resume link (mobile) */}
+              <a
+                href="../CV/Baher El-shaikh - Back-End Engineer.pdf"
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Download Baher El-shaikh CV"
+                className="block w-full text-left px-3 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-md"
+              >
+                <div className="inline-flex items-center space-x-2">
+                  <FileText className="h-4 w-4" />
+                  <span>Resume</span>
+                </div>
+              </a>
+             </div>
+           </div>
+         )}
+       </nav>
 
       {/* Hero Section */}
       <section id="hero" className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
