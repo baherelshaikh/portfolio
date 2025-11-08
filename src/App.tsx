@@ -564,17 +564,16 @@ function App() {
               ))}
 
              {/* CV / Resume link (desktop) */}
-             <a
-               href="../CV/Baher El-shaikh - Back-End Engineer.pdf"
-               download
-               target="_blank"
-               rel="noopener noreferrer"
-               aria-label="Baher El-shaikh - Back-End Engineer"
-               className="inline-flex items-center space-x-2 px-3 py-2 bg-slate-50 border border-slate-100 rounded-full text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition"
-             >
-               <FileText className="h-4 w-4" />
-               <span className="hidden md:inline">CV</span>
-             </a>
+              <a
+                href="https://drive.google.com/file/d/1_3DWScVvahpoXb2rI0PNo0dHHzNcfb2K/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Baher El-shaikh - Back-End Engineer"
+                className="inline-flex items-center space-x-2 px-3 py-2 bg-slate-50 border border-slate-100 rounded-full text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition"
+              >
+              <FileText className="h-4 w-4" />
+              <span className="hidden md:inline">CV</span>
+            </a>
             </div>
 
 
@@ -614,11 +613,8 @@ function App() {
 
               {/* CV / Resume link (mobile) */}
               <a
-                href="../CV/Baher El-shaikh - Back-End Engineer.pdf"
-                download
+                href="https://drive.google.com/file/d/1_3DWScVvahpoXb2rI0PNo0dHHzNcfb2K/view?usp=sharing"
                 target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Download Baher El-shaikh CV"
                 className="block w-full text-left px-3 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-md"
               >
                 <div className="inline-flex items-center space-x-2">
